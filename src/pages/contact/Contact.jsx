@@ -101,34 +101,35 @@ function Contact(){
     function sendMail(e){
 
         e.preventDefault()
-        alert('Email Send!')
-
-        fetch('https://api.mailjet.com/v3.1/send', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Basic ' + btoa('a4d3478800de117b8e080619facc50e4:a94c9d368a20471385c2a0c78e6bb3cd')
-        },
-        body: JSON.stringify({
-            'Messages': [
-            {
-                'From': {
-                'Email': 'alvessilva524@gmail.com',
-                'Name': 'Me'
-                },
-                'To': [
-                {
-                    'Email': 'alvessilva524@gmail.com',
-                    'Name': 'You'
-                }
-                ],
-                'Subject': 'My first Mailjet Email!',
-                'TextPart': 'Greetings from Mailjet!',
-                'HTMLPart': '<h3>Dear passenger 1, welcome to <a href="https://www.mailjet.com/">Mailjet</a>!</h3><br />May the delivery force be with you!'
-            }
-            ]
-        })
-        });
+            fetch("https://api.mailjet.com/v3.1/send", {
+            body: JSON.stringify({
+                "Messages": [
+                    {
+                    "From": {
+                        "Email": "alvessilva524@gmail.com",
+                        "Name": "Me"
+                    },
+                    "To": [
+                        {
+                        "Email": "alvessilva524@gmail.com",
+                        "Name": "You"
+                        }
+                    ],
+                    "Subject": "My first Mailjet Email!",
+                    "TextPart": "Greetings from Mailjet!",
+                    "HTMLPart": "<h3>Dear passenger 1, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!</h3><br />May the delivery force be with you!"
+                    }
+                ]
+                }),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Token: "sfg999666t673t7t82",
+                Authorization: "a4d3478800de117b8e080619facc50e4:a4303b54f537677114d789bdcc00d0a1"
+            },
+            method: "POST"
+            })
+            .then((response)=> console.log(response))
 
     }
 
