@@ -16,6 +16,11 @@ const Card = styled.div`
         font-style: italic;
     }
     margin-left: 20px;
+
+    @media only screen and (max-width: 600px) {
+        //height: 200px;
+        width: 90vw !important;
+    }
 `
 
 function ComentCard(props){

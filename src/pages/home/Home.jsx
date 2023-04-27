@@ -5,8 +5,13 @@ import styled from 'styled-components'
 import HomeImage from '../../img/HomeImage.jpg'
 import Logosvg from '../../img/Logo1.svg'
 
+//LIBS
 import Typewriter from 'typewriter-effect';
+import Hamburger from 'hamburger-react'
 
+
+//HOOKS
+import { useState } from 'react';
 
 const HomeSection = styled.section`
     width: 100%;
@@ -16,11 +21,11 @@ const HomeSection = styled.section`
     background-attachment: fixed;
 `
 const Header  = styled.header`
-    overflow: hidden;
     transform: translate(0, 20px);
     height: 150px;
     display: flex;
     align-items: center;
+
 `
 const Separator1 = styled.div`
     position: absolute;
@@ -44,9 +49,13 @@ const Logo  = styled.img`
     height: 160px;
     background-size: cover;
     //background-image: url(${Logosvg}); 
-`
-const Menu  = styled.ul`
 
+    @media only screen and (max-width: 900px) {
+        left: -30px;
+    }
+`
+const MenuUl  = styled.ul`
+    display: block;
     display: flex;
     position: absolute;
     right: 50px;
@@ -71,6 +80,16 @@ const Menu  = styled.ul`
         transform: scale(1.05);
         font-weight: 500;
     }
+
+    & li ,
+    span,
+    li a{
+        @media only screen and (max-width: 890px) {
+            display: none !important;
+        }
+    }
+
+
 `
 const Title = styled.div`
     margin: auto;
@@ -81,14 +100,20 @@ const Title = styled.div`
     color: white;
 
     & h1{
-        font-size: 6em;
+        //font-size: 6em;
+        font-size: clamp(1em, 5em, 10em); 
     }
 
     & h2{
         font-size: 2em;
     }
-`
 
+    @media only screen and (max-width: 600px) {
+        font-size: 0.7em;
+        transform: translate(0, 250px);
+    }
+
+`
 const OrçamentButton = styled.button`
     margin: auto;
     display: block;
@@ -98,7 +123,7 @@ const OrçamentButton = styled.button`
     font-family: 'Austria';
     font-size: 1.5em;
     background: #f2f2f2;
-    color: #7b9437;
+
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -108,9 +133,58 @@ const OrçamentButton = styled.button`
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
         transform: scale(1.1);
     }
+
+    a{
+        text-decoration: none;
+        color: #7b9437;
+    }
+
+    @media only screen and (max-width: 600px) {
+        transform: translate(0, 20px);
+    }
+`
+const HambuguerContainer = styled.div`
+    display: none;
+
+    position: absolute;
+    z-index: 9999;
+    top: 50px;
+    right: 30px;
+    @media only screen and (max-width: 900px) {
+        display: block !important;
+    }
+
+`
+const SecondaryMenu = styled.ul`
+
+    position: absolute;
+    top: 150px;
+    left: 0;
+    z-index: 999999;
+    width: 100vw;
+    height: max-content;
+    background: #FFF;
+    padding: 5px;
+    display: block !important;
+    li, li a{
+        margin: 5px;
+        font-size: 1.5em;
+        list-style: none;
+        text-decoration: none;
+        color: white;
+        color: #639e06;
+    }
+
+    @media only screen and (min-width: 900px) {
+        display: none !important;
+    }
+
 `
 
 function Home(){
+
+    const [isOpen, setOpen] = useState(false)
+
 return(
 
     <HomeSection>
@@ -120,13 +194,36 @@ return(
             <Logo src={Logosvg}>
             </Logo>
 
-            <Menu>
+            <MenuUl>
                 <li ><a href='#services'>Services</a> </li>
                 <span>|</span>
                 <li><a href='#galery'>Galery</a></li>
                 <span>|</span>
                 <li><a href='#contact'>Orcament/Contact</a></li>
-            </Menu>
+            </MenuUl>
+
+            <HambuguerContainer>
+                <Hamburger
+                    toggled={isOpen} toggle={setOpen} 
+                    color="#FFF"
+                    easing="ease-in-out"
+                    rounded={true}
+                    size={50}
+                />
+            </HambuguerContainer>
+
+
+            {isOpen &&
+                <SecondaryMenu>
+                    <li ><a href='#services'>Services</a> </li>
+
+                    <li><a href='#galery'>Galery</a></li>
+
+                    <li><a href='#contact'>Orcament/Contact</a></li>
+                </SecondaryMenu>
+            }
+
+
             <Separator2 />
         </Header>
 
@@ -146,7 +243,7 @@ return(
             </h2>
         </Title>
             
-            <OrçamentButton>Contact Now</OrçamentButton>
+            <OrçamentButton><a href='#contact'>Contact Now</a></OrçamentButton>
             
     </HomeSection>
 

@@ -1,13 +1,10 @@
 //STYLES
 import styled from 'styled-components'
-import styles from  './Galery.module.css'
-
 
 import { useSinglePrismicDocument} from '@prismicio/react'
 import { useState } from 'react';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 
 
 import ReactSimplyCarousel from 'react-simply-carousel';
@@ -40,12 +37,7 @@ const GalerySection = styled.section`
         transform: translate(0, 25px);
     }
 
-`
-const GaleryGrid = styled.div`
-    transform: translate(0, 100px);
-    display: grid;
-    gap: 50px;
-    grid-auto-flow: column;
+
 `
 
 const GaleryButton = styled.button`
@@ -138,9 +130,10 @@ function Galery(){
                             }}
                             responsiveProps={[
                             {
-                                itemsToShow: 2,
+                                itemsToShow: 3,
                                 itemsToScroll: 1,
-                                minWidth: 768,
+                                minWidth: 1000,
+                                alignSelf: 'center'
                             },
                             ]}
                             speed={400}
@@ -149,25 +142,29 @@ function Galery(){
 
                         >
 
-                            <div style={{ width: 400, height: 600, }}>
+                            <div style={{ height: 500,  }}>
                                 <GaleryItem  src={page.data.image1.url} />
                             </div>
 
-                            <div style={{ width: 400, height: 600, }}>
+                            <div style={{ height: 500,  }}>
                             <GaleryItem src={page.data.image2.url} />
                             </div>
 
-                            <div style={{ width: 400, height: 600, }}>
+                            <div style={{ height: 500,  }}>
                                 <GaleryItem src={page.data.image3.url} />
                             </div>
 
+                            <div style={{ height: 500,  }}>
+                                <GaleryItem src={page.data.image4.url} />
+                            </div>
+
+                            <div style={{ height: 500,  }}>
+                                <GaleryItem src={page.data.image5.url} />
+                            </div>
 
 
 
                         </ReactSimplyCarousel>
-
-
-                        //</GaleryGrid>
                     }
 
                 </div>

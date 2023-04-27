@@ -1,9 +1,7 @@
 //STYLES
 import styled from 'styled-components'
 
-import { FaWhatsapp } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
-
 import Typewriter from 'typewriter-effect'
 
 const ContactSection = styled.section`
@@ -13,23 +11,55 @@ const ContactSection = styled.section`
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     font-size: 4em;
     color: white;
     background-attachment: fixed;
+
+    @media only screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        height: max-content;
+    }
+
+
 `
+
+const AlertResp = styled.h2`
+    font-size: 0.5em;
+    transform: translate(0, 20px);
+    width: 25vw;
+    text-align: center;
+
+    @media only screen and (max-width: 600px) {
+        width: 75vw;
+        font-size: 0.3em;
+    }
+
+` 
 
 const Form = styled.form`
     display: flex;
+    align-items: center;
     flex-direction: column;
-    position: absolute;
-    left: 50px;
     width: 25vw;
+
+    @media only screen and (max-width: 600px) {
+        width: 75vw;
+        align-items: center;
+        margin: 50px 0 ;
+    }
 
     input, select, button{
         padding: 10px 20px 10px 10px;
         margin: 10px 0;
         border: none;
+        width: 400px;
+        
+        @media only screen and (max-width: 600px) {
+            width: 75vw;
+        }
+
     }
     input::placeholder, option::placeholder, button::placeholder{
         padding: 10px 20px 10px 10px;
@@ -40,14 +70,15 @@ const Form = styled.form`
         width: 25vw;
         font-size: 1em;
         margin-bottom: 10px;
+        @media only screen and (max-width: 600px) {
+            width: max-content;
+        }
     }
 
     button{
         border: none;
         border-radius: 25px;
         width: 50%;
-        position: relative;
-        left: 25%;
         font-size: 0.3em;
         cursor: pointer;
         transition: all ease-in-out 0.2s;
@@ -61,8 +92,7 @@ const Form = styled.form`
 `
 
 const SocialContainer = styled.div`
-position: absolute;
-right: 50px;
+
 width: 50vw;
 height: 75%;
 display: flex;
@@ -70,16 +100,33 @@ justify-content: center;
 flex-direction: column;
 align-items: center;
 
+    @media only screen and (max-width: 600px) {
+        padding: 20px 0;
+    
+    }
 
 h1{
     font-size: 1.5em;
     margin-top: 20px;
+    
+    @media only screen and (max-width: 600px) {
+        font-size: 0.4em;
+        margin: 20px 0;
+    }
 }
 h2{
     font-size: 0.9em;
+
+    @media only screen and (max-width: 600px) {
+        text-align: center;
+    }
 }
 
 div{
+    a{
+        color: white;
+    }
+
     margin-top: 20px;
     svg{
         margin: 0 20px;
@@ -90,6 +137,20 @@ div{
             transform: scale(1.1);
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+  
+    }
+
+    h4{
+        @media only screen and (max-width: 600px) {
+            font-size: 0.2em;
+        }
+    }
+
 }
 
 `
@@ -98,54 +159,18 @@ div{
 function Contact(){
 
 
-    function sendMail(e){
-
-        e.preventDefault()
-            fetch("https://api.mailjet.com/v3.1/send", {
-            body: JSON.stringify({
-                "Messages": [
-                    {
-                    "From": {
-                        "Email": "alvessilva524@gmail.com",
-                        "Name": "Me"
-                    },
-                    "To": [
-                        {
-                        "Email": "alvessilva524@gmail.com",
-                        "Name": "You"
-                        }
-                    ],
-                    "Subject": "My first Mailjet Email!",
-                    "TextPart": "Greetings from Mailjet!",
-                    "HTMLPart": "<h3>Dear passenger 1, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!</h3><br />May the delivery force be with you!"
-                    }
-                ]
-                }),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                Token: "sfg999666t673t7t82",
-                Authorization: "a4d3478800de117b8e080619facc50e4:a4303b54f537677114d789bdcc00d0a1"
-            },
-            method: "POST"
-            })
-            .then((response)=> console.log(response))
-
-    }
-
-
 
     return(
         
 
     <ContactSection id='contact'>
 
-        <Form> 
+        <Form action="https://formsubmit.co/alvessilva524@gmail.com" method="POST"> 
             <h1>Contact Now!</h1>
-            <input type='text' placeholder='Your name?'/>
-            <input type='email' placeholder='Your e-mail?'/>
-            <select>
-                <option selected hidden>Your request service</option>
+            <input type='text' name="name" required placeholder='Your name?'/>
+            <input type='email' name="e-mail" required placeholder='Your e-mail?'/>
+            <select name="service" required>
+                <option defaultValue={true} hidden>Your request service</option>
                 <option>Garden Maintenance</option>
                 <option>Pressure Washing Services In London</option>
                 <option>Hedge Trimming</option>
@@ -155,8 +180,8 @@ function Contact(){
                 <option>Gutter Cleaning Services</option>
                 <option>Gutter Cleaning Services</option>
             </select>
-            <button onClick={sendMail}>Submit</button>
-
+            <button type='submit'>Submit</button>
+            <AlertResp>We will contact you within 24 hours!</AlertResp>
         </Form>
 
         <SocialContainer>
@@ -176,13 +201,14 @@ function Contact(){
 
 
         <div>
-            <FaWhatsapp></FaWhatsapp>
-            <HiOutlineMail></HiOutlineMail>
+            <a target='_blank' rel="noopener noreferrer" href={`mailto:newgardenuk2015@gmail.com?subject=Budget%20request&body=Hello my name is Diogo, I request a quote for Garden Maintenance on the date of: 12/30/23`}><HiOutlineMail /></a>  
+            
+            <h4>newgardenuk2015@gmail.com</h4>
         </div>
 
         </SocialContainer>
         
-
+        
     </ContactSection>
 
 )

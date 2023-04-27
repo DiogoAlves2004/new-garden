@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import ComentCard from './ComentCard'
 
 import {useSinglePrismicDocument } from '@prismicio/react'
-import ServicesCard from './ServicesCard'
 
 const ServiceSection = styled.section`
     width: 100%;
@@ -18,17 +17,19 @@ const ServiceSection = styled.section`
     background-attachment: fixed;
 
 
-    @media only screen and (max-width: 1250px) {
-        height: 110vh;
+
+    @media only screen and (max-width: 1125px) {
+        flex-direction: column !important;
+        height: max-content;
+        padding: 25px 0;
     }
 
     
 `
 
 const ComentContainer = styled.div`
-    position: absolute;
-    right: 20px;
-    max-width: 650px;
+
+    max-width: 90vw;
     max-height: 90vh;
     overflow-x: hidden;
     overflow-y: auto;
@@ -44,6 +45,14 @@ const ComentContainer = styled.div`
         flex-wrap: nowrap;
     }
 
+    @media only screen and (max-width: 600px) {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        height: 400px;
+    }
+
     ::-webkit-scrollbar {
         width: 7px;               /* width of the entire scrollbar */
     }
@@ -57,10 +66,27 @@ const ComentContainer = styled.div`
 `
 
 const ServicesContainer = styled.div`
-    position: absolute;
-    left: 50px;
-    width: 50vw;
+
+    width: 100vw;
     height: 85vh;
+    margin-left: 50px;
+
+    @media only screen and (max-width: 600px) {
+        height: max-content !important;
+        padding: 25px 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    h1{
+        @media only screen and (max-width: 600px) {
+        font-size: 1em;
+        text-align: center;
+
+        }
+    }
 
 
 `
@@ -87,16 +113,29 @@ const OrçamentButton = styled.button`
 const Ul = styled.ul`
     list-style: none;
 
+    @media only screen and (max-width: 600px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90vw;
+        }
+
     li{
         font-size: 0.5em;
         margin: 5px;
+
+        @media only screen and (max-width: 600px) {
+            margin: 20px;
+            width: 75vw;
+            text-align: center;
+        }
     }
 `
 
 
 function Services(){
 
-    const [page, { state }] = useSinglePrismicDocument('new-garden')
+    const [page] = useSinglePrismicDocument('new-garden')
 
 
 return(
