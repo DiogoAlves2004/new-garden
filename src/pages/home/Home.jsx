@@ -16,7 +16,7 @@ import { useState } from 'react';
 const HomeSection = styled.section`
     width: 100%;
     height: 100vh;
-    background-image: url(${HomeImage}); 
+    background-image: url(${HomeImage});
     background-size: cover;
     background-attachment: fixed;
 `
