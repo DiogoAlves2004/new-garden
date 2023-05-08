@@ -126,7 +126,7 @@ const Ul = styled.ul`
             display: flex;
             //flex-direction: column;
 
-            width: 95vw;
+            width: 100vw;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
@@ -138,11 +138,11 @@ const Ul = styled.ul`
 
         @media only screen and (max-width: 600px) {
             margin: 10px 0;
-            width: 35vw;
+            width: 45%;
             text-align: center;
             align-items: center;
             justify-content: center;
-            font-size: 0.4em;
+            font-size: 0.3em;
         }
     }
 `
