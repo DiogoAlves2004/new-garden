@@ -140,7 +140,7 @@ const OrçamentButton = styled.button`
     }
 
     @media only screen and (max-width: 600px) {
-        transform: translate(0, 20px);
+        margin-top: 20px;
     }
 `
 const HambuguerContainer = styled.div`

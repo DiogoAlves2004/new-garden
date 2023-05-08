@@ -50,7 +50,8 @@ const ComentContainer = styled.div`
         flex-wrap: wrap !important;
         overflow-x: hidden !important;
         overflow-y: auto !important;
-        height: 400px;
+        height: 200px;
+        scroll-behavior: smooth;
     }
 
     ::-webkit-scrollbar {
@@ -96,16 +97,24 @@ const OrçamentButton = styled.button`
     font-family: 'Austria';
     font-size: 0.5em;
     background: #f2f2f2;
-    color: #7b9437;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     margin-bottom: 20px;
 
+    a{
+        color: #7b9437;
+        text-decoration: none;
+    }
+
     transition: all ease-in-out 0.2s;
     :hover{
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
         transform: scale(1.1);
+    }
+
+    @media only screen and (max-width: 600px){
+        margin-top: 20px;
     }
 `
 
@@ -115,9 +124,12 @@ const Ul = styled.ul`
 
     @media only screen and (max-width: 600px) {
             display: flex;
-            flex-direction: column;
+            //flex-direction: column;
+
+            width: 95vw;
+            flex-wrap: wrap;
             align-items: center;
-            width: 90vw;
+            justify-content: center;
         }
 
     li{
@@ -125,9 +137,12 @@ const Ul = styled.ul`
         margin: 5px;
 
         @media only screen and (max-width: 600px) {
-            margin: 20px;
-            width: 75vw;
+            margin: 10px 0;
+            width: 35vw;
             text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.4em;
         }
     }
 `
@@ -145,7 +160,7 @@ return(
         <ServicesContainer>
 
             <h1>Our Services</h1>
-            <OrçamentButton>Contact Now</OrçamentButton>
+            <OrçamentButton><a href='#contact'>Contact Now</a></OrçamentButton>
 
             <Ul>
                 <li>Garden Maintenance</li>

@@ -46,7 +46,13 @@ function WhatsappCircle(){
 
 return(
 
-    <Circle target='_blank' rel="noopener noreferrer" href={`https://api.whatsapp.com/send?phone=447595914158&text=Hello%20my%20name%20is%20Diogo,%20I%20request%20a%20quote%20for%20Garden%20Maintenance%20on%20the%20date%20of:%2012/30/23`}><FaWhatsapp />
+    <Circle 
+        target='_blank' 
+        rel="noopener noreferrer" 
+        href={`https://api.whatsapp.com/send?phone=447595914158&https://api.whatsapp.com/send?phone=447535914158&text=Hello%20my%20name%20is%20Diogo%2C%20I%20request%20a%20quote%20for%20Garden%20Maintenance%20on%20the%20date%20of%3A%202012%2F30%2F23`}
+    >
+    
+    <FaWhatsapp />
     </Circle>
     
 )

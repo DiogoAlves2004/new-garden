@@ -2,7 +2,9 @@
 import styled from 'styled-components'
 
 import { HiOutlineMail } from 'react-icons/hi'
+import { FaInstagram } from 'react-icons/fa'
 import Typewriter from 'typewriter-effect'
+import { useState } from 'react'
 
 const ContactSection = styled.section`
     width: 100%;
@@ -123,6 +125,15 @@ h2{
 }
 
 div{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    h6{
+        font-size: 0.4em;
+    }
     a{
         color: white;
     }
@@ -142,10 +153,10 @@ div{
         display: flex;
         flex-direction: column;
         align-items: center;
-  
+
     }
 
-    h4{
+    h6{
         @media only screen and (max-width: 600px) {
             font-size: 0.2em;
         }
@@ -156,8 +167,19 @@ div{
 `
 
 
+const SocialIcons = styled.div`
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+`
+
 function Contact(){
 
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [service, setService] = useState('')
+    const [date, setDate] = useState('')
 
 
     return(
@@ -167,19 +189,21 @@ function Contact(){
 
         <Form action="https://formsubmit.co/alvessilva524@gmail.com" method="POST"> 
             <h1>Contact Now!</h1>
-            <input type='text' name="name" required placeholder='Your name?'/>
-            <input type='email' name="e-mail" required placeholder='Your e-mail?'/>
-            <select name="service" required>
+            <input type='text' name="name" required placeholder='Your name?' onChange={(e)=> setName(e.target.value) }/>
+            <input type='email' name="e-mail" required placeholder='Your e-mail?' onChange={(e)=> setEmail(e.target.value)}/>
+            <select name="service" required onChange={(e)=> setService(e.target.value)}>
                 <option defaultValue={true} hidden>Your request service</option>
-                <option>Garden Maintenance</option>
-                <option>Pressure Washing Services In London</option>
-                <option>Hedge Trimming</option>
-                <option>Lawn Care Services</option>
-                <option>Fencing & Decking</option>
-                <option>Turfing Services</option>
-                <option>Gutter Cleaning Services</option>
-                <option>Gutter Cleaning Services</option>
+                <option value='Garden Maintenance' >Garden Maintenance</option>
+                <option value='Pressure Washing Services In London'>Pressure Washing Services In London</option>
+                <option value='Hedge Trimming'>Hedge Trimming</option>
+                <option value='Lawn Care Services'>Lawn Care Services</option>
+                <option value='Fencing & Decking'>Fencing & Decking</option>
+                <option value='Turfing Services'>Turfing Services</option>
+                <option value='Gutter Cleaning Services'>Gutter Cleaning Services</option>
             </select>
+
+            <input type='date' name="data" required placeholder='Your e-mail?' onChange={(e)=> setDate(e.target.value)}/>
+
             <button type='submit'>Submit</button>
             <AlertResp>We will contact you within 24 hours!</AlertResp>
         </Form>
@@ -201,9 +225,22 @@ function Contact(){
 
 
         <div>
-            <a target='_blank' rel="noopener noreferrer" href={`mailto:newgardenuk2015@gmail.com?subject=Budget%20request&body=Hello my name is Diogo, I request a quote for Garden Maintenance on the date of: 12/30/23`}><HiOutlineMail /></a>  
-            
-            <h4>newgardenuk2015@gmail.com</h4>
+
+            <SocialIcons>
+                <a 
+                    target='_blank' 
+                    rel="noopener noreferrer" 
+                    href={`mailto:newgardenuk2015@gmail.com?subject=Budget%20request&body=Hello my name is ${name}, I request a quote for ${service} on the date of: ${date}`}
+                >
+                <HiOutlineMail /></a>
+
+                <a 
+                    href='https://www.instagram.com/greengardenlondon/'                     
+                    target='_blank' 
+                    rel="noopener noreferrer" ><FaInstagram /></a>
+            </SocialIcons>
+            <h6>newgardenuk2015@gmail.com</h6>
+            <h6>+44 7595 914158</h6>
         </div>
 
         </SocialContainer>

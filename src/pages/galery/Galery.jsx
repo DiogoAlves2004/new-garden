@@ -2,15 +2,13 @@
 import styled from 'styled-components'
 
 import { useSinglePrismicDocument} from '@prismicio/react'
-import { useState } from 'react';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 
-import ReactSimplyCarousel from 'react-simply-carousel';
-
 //IMAGES
 import GaleryItem from './GaleryItem'
+
 
 const GalerySection = styled.section`
     width: 100%;
@@ -24,20 +22,16 @@ const GalerySection = styled.section`
     align-items: center;
     justify-content: center;
 
-    & h1 {
+    h1 {
         color: white;
         font-family: 'Austria';
         font-size: 4em;
-        transform: translate(0, 40px);
+        margin-bottom: 10px;
         border-bottom: 5px solid #507e08;
         padding-bottom: 3px;
+
+
     }
-
-    div {
-        transform: translate(0, 25px);
-    }
-
-
 `
 
 const GaleryButton = styled.button`
@@ -64,112 +58,55 @@ const GaleryButton = styled.button`
     }
 `
 
+const GaleryGrid = styled.div`
+    max-width: 70vw;
+    max-height: max-content ;
+    overflow-x:auto ;
+    display: flex;
+    flex-wrap: nowrap;
+
+    ::-webkit-scrollbar {
+        height: 7px;               /* width of the entire scrollbar */
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(201, 213, 183, 0.5);
+        border-radius: 20px;
+    }
+
+`
+
 
 
 function Galery(){
 
     const [page] = useSinglePrismicDocument('new-garden')
 
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-    
-    console.log(page)
-
-
     return(
-        <GalerySection id='galery'>
-            <h1>Galery</h1>
+        <GalerySection id='galery' >
 
 
 
 
-                <div>
+                    <h1>Galery</h1>
                     {page &&
 
-                        //<GaleryGrid>
+                        <GaleryGrid id='galerygrid'>
 
-                        <ReactSimplyCarousel
-                            activeSlideIndex={activeSlideIndex}
-                            onRequestChange={setActiveSlideIndex}
-                            itemsToShow={1}
-                            itemsToScroll={1}
-                            forwardBtnProps={{
-                            //here you can also pass className, or any other button element attributes
-                            style: {
-                                alignSelf: 'center',
-                                background: 'black',
-                                border: 'none',
-                                borderRadius: '50%',
-                                color: 'white',
-                                cursor: 'pointer',
-                                fontSize: '20px',
-                                height: 30,
-                                lineHeight: 1,
-                                textAlign: 'center',
-                                width: 30,
-                                marginLeft: 20,
-                                marginRight: 20
-                            },
-                            children: <span>{`>`}</span>,
-                            }}
-                            backwardBtnProps={{
-                            //here you can also pass className, or any other button element attributes
-                            style: {
-                                alignSelf: 'center',
-                                background: 'black',
-                                border: 'none',
-                                borderRadius: '50%',
-                                color: 'white',
-                                cursor: 'pointer',
-                                fontSize: '20px',
-                                height: 30,
-                                lineHeight: 1,
-                                textAlign: 'center',
-                                width: 30,
-                            },
-                            children: <span>{`<`}</span>,
-                            }}
-                            responsiveProps={[
-                            {
-                                itemsToShow: 3,
-                                itemsToScroll: 1,
-                                minWidth: 1000,
-                                alignSelf: 'center'
-                            },
-                            ]}
-                            speed={400}
-                            easing="linear"
-                            centerMode={true}
-
-                        >
-
-                            <div style={{ height: 500,  }}>
-                                <GaleryItem  src={page.data.image1.url} />
-                            </div>
-
-                            <div style={{ height: 500,  }}>
-                            <GaleryItem src={page.data.image2.url} />
-                            </div>
-
-                            <div style={{ height: 500,  }}>
-                                <GaleryItem src={page.data.image3.url} />
-                            </div>
-
-                            <div style={{ height: 500,  }}>
-                                <GaleryItem src={page.data.image4.url} />
-                            </div>
-
-                            <div style={{ height: 500,  }}>
-                                <GaleryItem src={page.data.image5.url} />
-                            </div>
+                            <GaleryItem  src={page.data.image1.url} />
+                            <GaleryItem  src={page.data.image2.url} />
+                            <GaleryItem  src={page.data.image3.url} />
+                            <GaleryItem  src={page.data.image4.url} />
 
 
-
-                        </ReactSimplyCarousel>
+                        </GaleryGrid>
+                        
                     }
 
-                </div>
 
+        {/*}
             <GaleryButton>More Images</GaleryButton>
+        {*/}
+        
         </GalerySection>
     )
 }export default Galery
