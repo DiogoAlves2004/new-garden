@@ -174,6 +174,8 @@ const SocialIcons = styled.div`
     flex-wrap: nowrap;
 `
 
+
+
 function Contact(){
 
 
@@ -246,7 +248,8 @@ function Contact(){
 
         </SocialContainer>
         
-        
+
+
     </ContactSection>
 
 )
