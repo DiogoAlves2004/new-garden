@@ -36,20 +36,20 @@ const GalerySection = styled.section`
 
 const GaleryButton = styled.button`
 
-    margin: auto;
-    display: block;
-
-    position: relative;
-    top: 40px;
-    
+    margin-top: 20px;
     padding: 10px 20px;
     font-family: 'Austria';
     font-size: 1.5em;
     background: #f2f2f2;
-    color: #7b9437;
+
     border: none;
     border-radius: 25px;
     cursor: pointer;
+    
+    a{
+        color: #7b9437;
+        text-decoration: none;
+    }
 
     transition: all ease-in-out 0.2s;
     :hover{
@@ -103,9 +103,8 @@ function Galery(){
                     }
 
 
-        {/*}
-            <GaleryButton>More Images</GaleryButton>
-        {*/}
+            <GaleryButton><a href='https://www.instagram.com/greengardenlondon/'>More Images</a></GaleryButton>
+
         
         </GalerySection>
     )

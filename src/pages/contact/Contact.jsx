@@ -74,6 +74,7 @@ const Form = styled.form`
         margin-bottom: 10px;
         @media only screen and (max-width: 600px) {
             width: max-content;
+            font-size: 0.8em;
         }
     }
 
