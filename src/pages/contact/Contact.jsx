@@ -188,7 +188,7 @@ function Contact(){
 
     <ContactSection id='contact'>
 
-        <Form action="https://formsubmit.co/alvessilva524@gmail.com" method="POST"> 
+        <Form action="https://formsubmit.co/newgardenuk2015@gmail.com" method="POST"> 
             <h1>Contact Now!</h1>
             <input type='text' name="name" required placeholder='Your name?' onChange={(e)=> setName(e.target.value) }/>
             <input type='email' name="e-mail" required placeholder='Your e-mail?' onChange={(e)=> setEmail(e.target.value)}/>
