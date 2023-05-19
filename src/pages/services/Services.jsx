@@ -177,10 +177,13 @@ return(
 
         {page &&
             <ComentContainer>
-                <ComentCard text={page.data.comentario1[0].text} author={page.data.autor1[0].text} />
-                <ComentCard text={page.data.comentario2[0].text} author={page.data.autor2[0].text} />
-                <ComentCard text={page.data.comentario3[0].text} author={page.data.autor3[0].text}  />
-                <ComentCard text={page.data.comentario4[0].text} author={page.data.autor4[0].text}  />
+                <ComentCard perfilImage='../../../public/perfil1.jpg' text={page.data.comentario1[0].text} author={page.data.autor1[0].text} />
+
+                <ComentCard perfilImage='../../../public/perfil2.jpg' text={page.data.comentario2[0].text} author={page.data.autor2[0].text} />
+
+                <ComentCard perfilImage='../../../public/perfil3.jpg' text={page.data.comentario3[0].text} author={page.data.autor3[0].text}  />
+
+                <ComentCard perfilImage='../../../public/perfil4.jpg' text={page.data.comentario4[0].text} author={page.data.autor4[0].text}  />
             </ComentContainer>
         }
     </ServiceSection>
